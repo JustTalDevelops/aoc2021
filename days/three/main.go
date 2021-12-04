@@ -37,8 +37,7 @@ func main() {
 
 // shorten removes the columns that aren't a part of the solution, or don't pass the check.
 func shorten(columns []string, check func(positiveBits, negativeBits int) bool) string {
-	var bitPosition int
-	for len(columns) > 1 {
+	for bitPosition := 0; len(columns) > 1; bitPosition++ {
 		bit := uint8('0')
 		if check(bits(columns, bitPosition)) {
 			bit = '1'
@@ -50,7 +49,6 @@ func shorten(columns []string, check func(positiveBits, negativeBits int) bool) 
 				i--
 			}
 		}
-		bitPosition++
 	}
 	return columns[0]
 }
