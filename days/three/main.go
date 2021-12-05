@@ -8,10 +8,9 @@ import (
 
 func main() {
 	columns := common.Inputs()
-	firstColumn := columns[0]
 
 	var gammaRayBits, epsilonRateBits strings.Builder
-	for column := 0; column < len(firstColumn); column++ {
+	for column := 0; column < len(columns[0]); column++ {
 		if positiveBits, negativeBits := bits(columns, column); positiveBits > negativeBits {
 			gammaRayBits.WriteRune('1')
 			epsilonRateBits.WriteRune('0')
