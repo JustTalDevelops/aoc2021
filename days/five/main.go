@@ -3,18 +3,19 @@ package main
 import (
 	"fmt"
 	"github.com/justtaldevelops/aoc2021/common"
-	"strings"
 )
 
 func main() {
 	inputs := common.Inputs()
 	segments := make([]segment, 0)
 	for _, line := range inputs {
-		unparsedPoints := strings.Split(line, " -> ")
-		segments = append(segments, segment{
-			start: parsePoint(unparsedPoints[0]),
-			end:   parsePoint(unparsedPoints[1]),
-		})
+		var seg segment
+
+		_, err := fmt.Sscanf(line, "%d,%d -> %d,%d", &seg.start.x, &seg.start.z, &seg.end.x, &seg.end.z)
+		if err != nil {
+			panic(err)
+		}
+		segments = append(segments, seg)
 	}
 
 	fmt.Println("Part One Answer:", countOverlaps(segments, false))

@@ -5,12 +5,17 @@ type segment struct {
 	start, end point
 }
 
+// point is a 2D point.
+type point struct {
+	x, z int
+}
+
 // countOverlaps counts the number of overlaps between the given segments.
 func countOverlaps(segments []segment, diagonals bool) int {
 	points := make(map[point]int)
 	for _, seg := range segments {
 		pos := seg.start
-		offset := offsetForTarget(pos, seg.end)
+		offset := offsetTowards(pos, seg.end)
 
 		// Ignore diagonals if we're not counting them.
 		if offset.x != 0 && offset.z != 0 && !diagonals {
@@ -32,6 +37,11 @@ func countOverlaps(segments []segment, diagonals bool) int {
 		}
 	}
 	return overlaps
+}
+
+// offsetTowards returns the offset of this point to move towards the given point.
+func offsetTowards(current, target point) point {
+	return point{sign(current.x, target.x), sign(current.z, target.z)}
 }
 
 // sign ...
