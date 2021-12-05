@@ -45,7 +45,11 @@ func InputsSplit(s string) [][]string {
 
 // InputsAsInts reads the input.txt file and returns it as a []int.
 func InputsAsInts() []int {
-	inputs := Inputs()
+	return StringsToInts(Inputs())
+}
+
+// StringsToInts converts a []string to a []int.
+func StringsToInts(inputs []string) []int {
 	ints := make([]int, len(inputs))
 	for i, input := range inputs {
 		ints[i] = Atoi(input)
