@@ -19,20 +19,6 @@ func Inputs() []string {
 	return inputs
 }
 
-// Copy copies the given string slice.
-func Copy(input []string) []string {
-	return append(make([]string, 0, len(input)), input...)
-}
-
-// IntFromBinary converts a binary string to an integer.
-func IntFromBinary(binary string) int {
-	i, err := strconv.ParseInt(binary, 2, 64)
-	if err != nil {
-		panic(err)
-	}
-	return int(i)
-}
-
 // InputsSplit returns the input.txt file as a [][]string.
 func InputsSplit(s string) [][]string {
 	inputs := Inputs()
@@ -46,6 +32,20 @@ func InputsSplit(s string) [][]string {
 // InputsAsInts reads the input.txt file and returns it as a []int.
 func InputsAsInts() []int {
 	return StringsToInts(Inputs())
+}
+
+// Copy copies the given string slice.
+func Copy(input []string) []string {
+	return append(make([]string, 0, len(input)), input...)
+}
+
+// IntFromBinary converts a binary string to an integer.
+func IntFromBinary(binary string) int {
+	i, err := strconv.ParseInt(binary, 2, 64)
+	if err != nil {
+		panic(err)
+	}
+	return int(i)
 }
 
 // StringsToInts converts a []string to a []int.
