@@ -7,9 +7,8 @@ import (
 )
 
 func main() {
-	inputs := common.Inputs()
 	populations := make([]int, 9)
-	for _, input := range strings.Split(inputs[0], ",") {
+	for _, input := range strings.Split(common.Inputs()[0], ",") {
 		populations[common.Atoi(input)]++
 	}
 
