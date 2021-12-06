@@ -34,9 +34,23 @@ func InputsAsInts() []int {
 	return StringsToInts(Inputs())
 }
 
-// Copy copies the given string slice.
-func Copy(input []string) []string {
+// CopyStrings copies the given string slice.
+func CopyStrings(input []string) []string {
 	return append(make([]string, 0, len(input)), input...)
+}
+
+// CopyInts copies the given int slice.
+func CopyInts(input []int) []int {
+	return append(make([]int, 0, len(input)), input...)
+}
+
+// Sum returns the sum of the given int slice.
+func Sum(input []int) int {
+	var result int
+	for _, i := range input {
+		result += i
+	}
+	return result
 }
 
 // IntFromBinary converts a binary string to an integer.

@@ -20,10 +20,10 @@ func main() {
 		}
 	}
 
-	oxygenGeneratorRatingBits := shorten(common.Copy(columns), func(positiveBits, negativeBits int) bool {
+	oxygenGeneratorRatingBits := shorten(common.CopyStrings(columns), func(positiveBits, negativeBits int) bool {
 		return positiveBits < negativeBits
 	})
-	carbonDioxideScrubberRatingBits := shorten(common.Copy(columns), func(positiveBits, negativeBits int) bool {
+	carbonDioxideScrubberRatingBits := shorten(common.CopyStrings(columns), func(positiveBits, negativeBits int) bool {
 		return negativeBits < positiveBits || negativeBits == positiveBits
 	})
 
