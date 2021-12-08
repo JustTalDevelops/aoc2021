@@ -2,6 +2,8 @@ package common
 
 import (
 	"io/ioutil"
+	"math"
+	"sort"
 	"strconv"
 	"strings"
 )
@@ -42,6 +44,31 @@ func CopyStrings(input []string) []string {
 // CopyInts copies the given int slice.
 func CopyInts(input []int) []int {
 	return append(make([]int, 0, len(input)), input...)
+}
+
+// Abs returns the absolute value of the given int.
+func Abs(x int) int {
+	if x < 0 {
+		return -x
+	}
+	return x
+}
+
+// Median returns the median of the given int slice.
+func Median(nums []int) int {
+	sort.Ints(nums)
+
+	size := float64(len(nums))
+	median := (float64(nums[int(size/2)]) + float64(nums[int(size-1)/2])) / 2
+	if median != math.Trunc(median) {
+		return 0
+	}
+	return int(median)
+}
+
+// Average returns the average of the given int slice.
+func Average(nums []int) int {
+	return int(math.Floor(float64(Sum(nums)) / float64(len(nums))))
 }
 
 // Sum returns the sum of the given int slice.
